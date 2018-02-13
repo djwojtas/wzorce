@@ -1,8 +1,8 @@
 package application.api.controller;
 
-import application.fx.LightStatus;
+import application.model.LightStatus;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
 
 public class LightsController {
     public LightsController() {

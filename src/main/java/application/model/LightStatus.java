@@ -1,9 +1,7 @@
-package application.fx;
+package application.model;
 
 import external.lights.Light;
 import external.lights.states.impl.LightOff;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
@@ -24,18 +22,14 @@ public class LightStatus {
     }
 
     public static void init(Pane buttonContainer) {
-        lights = new ArrayList<Light>();
+        lights = new ArrayList<>();
 
         for(String name : lightsNames) {
             final Light light = new Light();
             Button button = new Button();
 
             button.setText(name);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent event) {
-                    light.getLightState().toggle(light);
-                }
-            });
+            button.setOnAction(event -> light.getLightState().toggle(light));
 
             buttonContainer.getChildren().add(button);
 
