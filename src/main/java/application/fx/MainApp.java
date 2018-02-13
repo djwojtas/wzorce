@@ -1,6 +1,6 @@
 package application.fx;
 
-import external.LightStatus;
+import application.requests.RequestsHandler;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainApp extends Application {
 
@@ -34,5 +36,11 @@ public class MainApp extends Application {
 
         primaryStage.setScene(new Scene(root, 150, 200));
         primaryStage.show();
+
+        try {
+            RequestsHandler.POST("http://postman-echo.com/post", "{\"message\"=\"TEST\"}", "application/json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

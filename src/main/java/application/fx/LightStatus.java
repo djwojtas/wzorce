@@ -1,4 +1,4 @@
-package external;
+package application.fx;
 
 import external.lights.Light;
 import external.lights.states.impl.LightOff;
