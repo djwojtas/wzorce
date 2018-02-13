@@ -14,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import utils.request.PlainRequestBody;
+import utils.request.decorators.impl.ResquestBodyJSONMessageDecorator;
 
 import java.io.IOException;
 
@@ -62,7 +64,11 @@ public class MainApp extends Application {
         doorbellButton.setOnAction(event -> {
             if(ConnectionInfo.getSpeakerIP() != null && !ConnectionInfo.getSpeakerIP().equals("")) {
                 try {
-                    RequestsHandler.POST(ConnectionInfo.getSpeakerIP(), "{\"message\":\"doorbell is ringing\"}", ConnectionInfo.getContentType());
+                    RequestsHandler.POST(ConnectionInfo.getSpeakerIP(),
+                            new ResquestBodyJSONMessageDecorator(new PlainRequestBody(
+                                    "doorbell is ringing"
+                            )).getBody(),
+                            ConnectionInfo.getContentType());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
