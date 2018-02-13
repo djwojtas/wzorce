@@ -1,5 +1,6 @@
 package application.fx;
 
+import application.api.controller.LightsController;
 import application.requests.RequestsHandler;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class MainApp extends Application {
 
     public static void main(String[] args) {
+        new LightsController();
         launch(args);
     }
 
@@ -38,7 +40,7 @@ public class MainApp extends Application {
         primaryStage.show();
 
         try {
-            RequestsHandler.POST("http://postman-echo.com/post", "{\"message\"=\"TEST\"}", "application/json");
+            RequestsHandler.POST("http://postman-echo.com/post", "{\"message\":\"TEST\"}", "application/json");
         } catch (IOException e) {
             e.printStackTrace();
         }
