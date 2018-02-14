@@ -21,7 +21,7 @@ public class RequestsHandler {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Tried to send request with empty speaker IP");
+            System.out.println("Tried to send request with empty server IP");
         }
     }
 

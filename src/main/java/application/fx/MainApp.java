@@ -35,13 +35,13 @@ public class MainApp extends Application {
         content.setSpacing(10);
         content.setPadding(new Insets(10, 10, 10, 10));
 
-        Label inputIP = new Label("Enter speaker address:");
+        Label inputIP = new Label("Enter server address:");
         TextField speakerIPTextField = new TextField();
         speakerIPTextField.setAlignment(Pos.CENTER);
-        Label setConfirmation = new Label("Speaker address has been set");
+        Label setConfirmation = new Label("Server address has been set");
         setConfirmation.setVisible(false);
         Button setIP = new Button();
-        setIP.setText("confirm speaker address");
+        setIP.setText("confirm server address");
         setIP.setOnAction(event -> {
             ConnectionInfo.setSpeakerIP(speakerIPTextField.getText());
             setConfirmation.setVisible(true);
