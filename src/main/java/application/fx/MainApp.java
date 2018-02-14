@@ -17,8 +17,6 @@ import javafx.stage.Stage;
 import utils.request.PlainRequestBody;
 import utils.request.decorators.impl.ResquestBodyJSONMessageDecorator;
 
-import java.io.IOException;
-
 public class MainApp extends Application {
 
     public static void main(String[] args) {
@@ -61,21 +59,12 @@ public class MainApp extends Application {
 
         Button doorbellButton = new Button();
         doorbellButton.setText("toggle doorbell");
-        doorbellButton.setOnAction(event -> {
-            if(ConnectionInfo.getSpeakerIP() != null && !ConnectionInfo.getSpeakerIP().equals("")) {
-                try {
-                    RequestsHandler.POST(ConnectionInfo.getSpeakerIP(),
-                            new ResquestBodyJSONMessageDecorator(new PlainRequestBody(
+        doorbellButton.setOnAction(event ->
+                RequestsHandler.safePOST(ConnectionInfo.getSpeakerIP(),
+                        new ResquestBodyJSONMessageDecorator(new PlainRequestBody(
                                     "doorbell is ringing"
                             )).getBody(),
-                            ConnectionInfo.getContentType());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("Tried to send request with empty speaker IP");
-            }
-        });
+                            ConnectionInfo.getContentType()));
         content.getChildren().add(doorbellButton);
 
         root.getChildren().add(content);

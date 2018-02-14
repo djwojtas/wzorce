@@ -29,7 +29,7 @@ public class LightStatus {
             Button button = new Button();
 
             button.setText(name);
-            button.setOnAction(event -> light.getLightState().toggle(light));
+            button.setOnAction(event -> light.toggle());
 
             buttonContainer.getChildren().add(button);
 
