@@ -11,8 +11,8 @@ public class ResquestBodyXMLMessageDecorator extends RequestBodyDecorator{
     @Override
     public String getBody() {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<root><message>" +
+                "<root><msg>" +
                 super.getBody() +
-                "</message></root>";
+                "</msg></root>";
     }
 }

@@ -10,7 +10,7 @@ public class ResquestBodyJSONMessageDecorator extends RequestBodyDecorator {
 
     @Override
     public String getBody() {
-        return "{\"message\":\"" +
+        return "{\"msg\":\"" +
                 super.getBody() +
                 "\"}";
     }
